@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchResult from './SearchResult'
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -12,15 +13,15 @@ class SearchResults extends React.Component {
     if (!(albums.length > 0)) { return null; }
 
     return (
-      <ul>
+      <div>
         {albums.map((album) => {
           return (
-            <li key={album.trackId}>
-              {album.collectionName}
-            </li>
+            <SearchResult 
+              album={album}
+            />
           )
         })}
-      </ul>
+      </div>
     )
   }
 }
