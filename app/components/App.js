@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchInput from './SearchInput';
+import { getAlbums } from '../utils/api'
 
 class App extends React.Component {
   constructor(props) {
@@ -13,10 +14,17 @@ class App extends React.Component {
 
   handleSubmit(artist) {
     this.setState(() => ({artist}))
+    getAlbums(artist)
+      .then((albums) => {
+        console.log("\n\nAlbums: ", albums)
+      })
   }
+
+
 
   render() {
     const {artist} = this.state;
+    console.log("\n\nApp State (render)", this.state)
     return (
       <div className='container'>
         <SearchInput 
